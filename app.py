@@ -21,7 +21,7 @@ def github_hook():
     # data to json utf-8
     data = json.dumps(data, ensure_ascii=False)
     print (data)
-    if 'ref' in data and data['ref'] == 'refs/heads/master':
+    if data['ref'] == 'refs/heads/master':
         # git pull
         git_pull()
 
