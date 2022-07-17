@@ -9,8 +9,9 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+def hello_world():
+    # view index.html
+    return flask.render_template('index.html')
 
 
 # gitHub hook just the push event
