@@ -19,4 +19,4 @@ def github_hook():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run("0.0.0.0", port=18080, debug=True)
