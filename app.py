@@ -36,15 +36,12 @@ def status():
     host = request.headers.get('Host')
     # get user port
     port = request.headers.get('X-Forwarded-Port')
-    # get user protocol
-    protocol = request.headers.get('X-Forwarded-Proto')
     print ('ip: ' + ip)
     print ('user_agent: ' + user_agent)
     print ('host: ' + host)
     print ('port: ' + str(port))
-    print ('protocol: ' + protocol)
 
-    return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port, 'protocol': protocol})
+    return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port})
 
 
 # git pull shell
