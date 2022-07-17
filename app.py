@@ -16,9 +16,9 @@ def hello_world():  # put application's code here
 def github_hook():
     # get all body data
     data = request.get_json()
-    # data to json
-    json_data = json.dumps(data)
-    print (json_data)
+    # data to json utf-8
+    data = json.dumps(data, ensure_ascii=False)
+    print (data)
     git_pull()
     return 'Github hook received'
 
