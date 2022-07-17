@@ -39,10 +39,6 @@ def status():
     host = request.headers.get('Host')
     # get user port
     port = request.headers.get('X-Forwarded-Port')
-    print ('ip: ' + ip)
-    print ('user_agent: ' + user_agent)
-    print ('host: ' + host)
-    print ('port: ' + str(port))
 
     return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port})
 
