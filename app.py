@@ -41,7 +41,7 @@ def status():
     print ('ip: ' + ip)
     print ('user_agent: ' + user_agent)
     print ('host: ' + host)
-    print ('port: ' + port)
+    print ('port: ' + str(port))
     print ('protocol: ' + protocol)
 
     return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port, 'protocol': protocol})
