@@ -24,6 +24,12 @@ def github_hook():
     return 'Github hook received'
 
 
+# check if the app is running
+@app.route('/check')
+def status():
+    return 'OK'
+
+
 # git pull shell
 def git_pull():
     # execute shell
