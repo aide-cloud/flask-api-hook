@@ -26,8 +26,10 @@ def github_hook():
 # git pull shell
 def git_pull():
     # execute shell
+    print ('git pull')
     os.system('git pull')
     return 'git pull'
+
 
 if __name__ == '__main__':
     app.run("0.0.0.0", port=18080, debug=True)
