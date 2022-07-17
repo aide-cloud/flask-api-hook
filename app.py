@@ -2,6 +2,7 @@
 import json
 import os
 
+import flask
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -27,7 +28,23 @@ def github_hook():
 # check if the app is running
 @app.route('/check')
 def status():
-    return 'OK'
+    # get user ip
+    ip = request.remote_addr
+    # get user agent
+    user_agent = request.headers.get('User-Agent')
+    # get user host
+    host = request.headers.get('Host')
+    # get user port
+    port = request.headers.get('X-Forwarded-Port')
+    # get user protocol
+    protocol = request.headers.get('X-Forwarded-Proto')
+    print ('ip: ' + ip)
+    print ('user_agent: ' + user_agent)
+    print ('host: ' + host)
+    print ('port: ' + port)
+    print ('protocol: ' + protocol)
+
+    return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port, 'protocol': protocol})
 
 
 # git pull shell
