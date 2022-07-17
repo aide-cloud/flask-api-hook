@@ -19,9 +19,6 @@ def hello_world():
 def github_hook():
     # get all body data
     data = request.get_json()
-    # data to json utf-8
-    data = json.dumps(data, ensure_ascii=False)
-    print (data)
     if data['ref'] == 'refs/heads/master':
         # git pull
         git_pull()
