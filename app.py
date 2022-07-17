@@ -2,8 +2,7 @@
 import json
 import os
 
-import flask
-from flask import Flask, request
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -11,7 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     # view index.html
-    return flask.render_template('index.html')
+    return render_template('index.html')
 
 
 # gitHub hook just the push event
@@ -41,7 +40,7 @@ def status():
     # get user port
     port = request.headers.get('X-Forwarded-Port')
 
-    return flask.jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port})
+    return jsonify({'ip': ip, 'user_agent': user_agent, 'host': host, 'port': port})
 
 
 # git pull shell
