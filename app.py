@@ -65,7 +65,7 @@ def add_users():
         data = request.get_json()
         if 'name' in data and 'age' in data:
             aeg = int(data['age'])
-            if data['name'] != '' and (2 > len(data['name']) or 16 > len(data['name'])) and aeg <= 18:
+            if data['name'] != '' and (2 < len(data['name']) or 16 > len(data['name'])) and aeg >= 18:
                 # add user
                 return response(200, 'OK', data)
         return response(400, 'Bad Request')
@@ -87,7 +87,7 @@ def delete_users():
             return response(status=400, message="Bad Request")
         return response(200, "delete user success, id: " + str(idInt))
     except Exception as e:
-        return response(status=400, message="Bad Request"+str(e))
+        return response(status=400, message="Bad Request" + str(e))
 
 
 # update_user
@@ -99,12 +99,12 @@ def update_user():
             return response(status=400, message="request method must be PUT")
         # get all body data
         data = request.get_json()
-        if "id" not in data:
-
+        if "id" in data:
             id = int(data['id'])
-            if id is None or id <= 0:
-                return response(status=400, message="Bad Request")
-        return response(200, "update user success, id: " + data['id'])
+            if id is not None and id >= 0:
+                return response(200, "update user success, id: " + str(id))
+
+        return response(status=400, message="Bad Request")
     except Exception as e:
         return response(status=400, message="Bad Request" + str(e))
 
